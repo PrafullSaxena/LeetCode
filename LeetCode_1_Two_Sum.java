@@ -13,19 +13,20 @@ class Solution {
         
         int[] result = new int[2];
         
-        while(firstPointer < nums.length -1){
-            
-            if(secondPointer == nums.length -1){
-                firstPointer = firstPointer++;
-                secondPointer = firstPointer + 1;
-            }
-            
+        while(firstPointer < nums.length - 1){
+              
             if (nums[firstPointer] + nums[secondPointer] == target){
                 result[0] = firstPointer;
                 result[1] = secondPointer;
                 return result;
             } 
             
+            if(secondPointer == nums.length - 1){
+                firstPointer = firstPointer+1;
+                secondPointer = firstPointer + 1;
+            }else {
+                secondPointer+=1; 
+            }
         }
         
         return result; 
