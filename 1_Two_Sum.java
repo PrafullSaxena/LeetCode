@@ -1,3 +1,14 @@
+
+/*
+            Logic 
+            
+            Used HashMap to track record for all previous values (value and index) 
+            and keep checking  if target - current value == any of stored value if 
+            so just fetch the index and return with curent index 
+        
+*/
+
+
 class Solution {
     public int[] twoSum(int[] nums, int target) {
      
