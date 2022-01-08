@@ -1,10 +1,34 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
      
+        return MoreOptimized(nums, target);
         // return BruteForce(nums, target);
-        return Optimum(nums, target);
+        // return Optimum(nums, target);
     }
     
+    public int[] MoreOptimized(int[] nums, int target){
+
+        Map<Integer, Integer> bucket = new HashMap<Integer, Integer>();
+        
+        for(int i=0; i<nums.length; i++){
+            
+            if(bucket.containsKey(target - nums[i])){
+                
+                return new int[] {
+                    bucket.get(target - nums[i]),
+                    i
+                };   
+            }
+            
+            bucket.put(
+                nums[i],
+                i
+            );
+            
+        }
+        
+        return null;
+    }
     
     public int[] Optimum(int[] nums, int target){
         
