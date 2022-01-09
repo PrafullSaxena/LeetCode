@@ -1,9 +1,49 @@
+/*
+
+        Solution - Two Pointers
+        
+        Used two pointer one the begining and one at the end, 
+        and calculated the area for each iteration and compared the 
+        area with last maxWater value, and to change the pointers,
+        check which value is smallest and based on that increase or decrease the index of it, 
+        cause the between two heights the lengthy one can hold more water and we already have calculated the 
+        holding water with current (small and lenghty walls) so changing the small one will help in findings 
+        new larger (larger then previous small or previous larger wall). 
+*/
+
+
 class Solution {
     public int maxArea(int[] height) {
         // return BruteForce(height);
-        return TwoPointer(height);
+        // return TwoPointer(height);
+        return Optimized(height);
     }
 
+    
+    public int Optimized(int[] height){
+        
+        int maxWater = 0;
+        
+        int leftPointer = 0;
+        int rightPointer = height.length - 1;
+        
+        
+        while(leftPointer < rightPointer){
+            
+            int area = Math.min(height[leftPointer],
+                                    height[rightPointer]) 
+                                *   (rightPointer - leftPointer);
+            
+            maxWater = Math.max(maxWater, area);
+            
+            if(height[leftPointer] < height[rightPointer]) leftPointer++;
+            else rightPointer--;
+            
+        }
+        
+        return maxWater; 
+        
+    }
     
     public int TwoPointer(int[] height){
         int maxWater = 0;
