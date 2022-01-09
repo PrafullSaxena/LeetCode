@@ -1,0 +1,25 @@
+class Solution {
+    public int maxArea(int[] height) {
+        return BruteForce(height);
+    }
+
+    
+    
+    
+    
+    public int BruteForce(int[] height) {
+        
+        int maxWater = 0; 
+        
+        for(int i = 0; i < height.length; i++){ 
+            for(int j = i+1; j < height.length; j++){
+                
+                int area = Math.min(height[i], height[j]) * (j - i); 
+                maxWater = Math.max(area, maxWater);
+            }
+            
+        }
+        return maxWater; 
+    }
+    
+}
