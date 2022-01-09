@@ -1,10 +1,32 @@
 class Solution {
     public int maxArea(int[] height) {
-        return BruteForce(height);
+        // return BruteForce(height);
+        return TwoPointer(height);
     }
 
     
-    
+    public int TwoPointer(int[] height){
+        int maxWater = 0;
+        
+        int firstPointer = 0;
+        int secondPointer = 1;
+        
+        while(firstPointer < height.length - 1){
+            
+            
+            int area = Math.min(height[firstPointer], height[secondPointer]) 
+                * (secondPointer - firstPointer);
+            
+            maxWater = Math.max(area, maxWater);
+            
+            if(secondPointer == (height.length - 1)){
+                firstPointer ++;
+                secondPointer = firstPointer + 1;
+            }else secondPointer ++;
+        }
+        
+        return maxWater; 
+    }
     
     
     public int BruteForce(int[] height) {
