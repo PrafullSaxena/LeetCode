@@ -1,0 +1,30 @@
+class Solution {
+    public boolean backspaceCompare(String s, String t) {
+        return solution(s, t);
+    }
+    
+    public boolean solution(String s, String t){
+
+       String newS = trimming(s);
+       String newT = trimming(t);
+
+        return (newS.equals(newT)) ? true : false;
+    }
+
+    public String trimming(String s){
+
+        Stack<Character> stack = new Stack<>();
+        for(char c : s.toCharArray()){
+            try{
+                if(c == '#'){
+                    stack.pop();
+                }else stack.push(c);
+                
+            }catch (Exception e) {}
+        }
+
+        String newString = stack.toString();
+        return newString;
+    }
+    
+}
