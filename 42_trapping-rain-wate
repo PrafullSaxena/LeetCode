@@ -1,0 +1,37 @@
+class Solution {
+    public int trap(int[] height) {
+        return BruteForce(height);
+    }
+    
+    
+    
+    public int BruteForce(int[] h){
+
+        if(h.length < 3) return 0;
+
+        int totalWater = 0;
+
+        for(int i=1; i<h.length; i++){
+
+            int leftMax=0;
+            int rightMax=0;
+
+            for(int left=i-1; left>=0; left--){
+                leftMax = Math.max(leftMax, h[left]);
+            }
+
+            for(int right=i+1; right < h.length; right++){
+                rightMax = Math.max(rightMax, h[right]);
+            }
+
+            int min = Math.min(leftMax, rightMax);
+
+            if(h[i] < min){
+                totalWater = totalWater + (min - h[i]);
+            }
+
+        }
+
+        return totalWater;
+    }
+}
