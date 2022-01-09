@@ -8,7 +8,7 @@ class Solution {
        String newS = trimming(s);
        String newT = trimming(t);
 
-        return (newS.equals(newT)) ? true : false;
+        return newS.equals(newT);
     }
 
     public String trimming(String s){
