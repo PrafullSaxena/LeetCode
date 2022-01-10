@@ -2,7 +2,7 @@
 
     BruteForce 
         timeComplexity - O(n^2)
-        spaceComplexity - O(1)
+        spaceComplexity - O(n)
         
    Optimized
         timeComplexity - O(n)
