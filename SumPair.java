@@ -40,6 +40,7 @@ public class SumPair {
 
         for (int i = 0; i < nums.length; i++) {
             for (int j = i+1; j < nums.length; j++) {
+                
                 if(nums[i] > target) continue;
                 
                 if(nums[i] + nums[j] == target) {
@@ -47,7 +48,6 @@ public class SumPair {
                 }
             }
         }
-        
         return resultSet;
     }
 
