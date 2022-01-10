@@ -8,7 +8,7 @@
         timeComplexity - O(n)
         spaceComplexity - O(n)
         
-   Both the function will return the list of elements whos sum is equals to target.
+   Both the function will return the list of elements whose sum is equals to target.
 
 */
 
