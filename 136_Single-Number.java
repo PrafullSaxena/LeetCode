@@ -1,8 +1,10 @@
 class Solution {
     public int singleNumber(int[] nums) {
-        // return BruteForce(nums);
-        return WithSpace(nums);
-        // return Optimized(nums);
+        // return BruteForce(nums);   // 378 ms 
+        // return WithSpace(nums);  // 902 ms
+        // return Optimized(nums);  // 1 ms
+        // return ExtraSpaceMap(nums); // 14 ms
+        return WithSpaceArrayList(nums); //722 ms 
     }
     
     
@@ -18,23 +20,46 @@ class Solution {
     
     public int WithSpace(int[] nums) {
         
-        Map<Integer, Integer> bucket = new HashMap<>();
-        Integer result = null;
-        Stack<Integer> lastResult = new Stack<>(); 
-        
-        for(int i = 0; i < nums.length; i++){
-            if(bucket.containsKey(nums[i])){
-                lastResult.pop();
-                result = lastResult.peek();
+        List<Integer> list = new LinkedList<>();
+
+        for(Integer i : nums){
+            if(list.contains(i)){
+                list.remove(i);
             }else{
-                lastResult.push(result);
-                result = nums[i];
-                bucket.put(nums[i], 0);
+                list.add(i);
             }
         }
-        return result; 
+       return list.get(0);
     }
     
+        public int WithSpaceArrayList(int[] nums) {
+        
+        List<Integer> list = new ArrayList<>();
+
+        for(Integer i : nums){
+            if(list.contains(i)){
+                list.remove(i);
+            }else{
+                list.add(i);
+            }
+        }
+       return list.get(0);
+    }
+    
+    public int ExtraSpaceMap(int[] nums){
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for(Integer i : nums){
+            if(map.containsKey(i)){
+                map.remove(i);
+            }else{
+                map.put(i, 0);
+            }
+        }
+        
+        return (int) map.keySet().toArray()[0];
+
+    }
     
     
     public int BruteForce(int[] nums) {
