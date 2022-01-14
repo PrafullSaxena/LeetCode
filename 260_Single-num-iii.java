@@ -13,13 +13,55 @@ class Solution {
     public int[] singleNumber(int[] nums) {
         
         // return Optimized(nums);
+        // return BruteForce(nums);
+        return ExtraSpace(nums);
         
     }
     
     
-    public int[] BruteForse(int[] nums){
+    public int[] ExtraSpace(int[] nums){
         
+        Map<Integer, Integer> bucket = new HashMap<>();
         
+        for(int i = 0; i < nums.length; i++){
+            
+            if(bucket.containsKey(nums[i])){
+                bucket.remove(nums[i]);
+            }else{
+                bucket.put(nums[i], 0);
+            }
+        }
+        
+        int[] result = new int[2];
+        
+        result[0] = (int) bucket.keySet().toArray()[0];
+        result[1] = (int) bucket.keySet().toArray()[1];
+        return result;
+    }
+    
+    public int[] BruteForce(int[] nums){
+        
+        int[] result = new int[2];
+        
+        int index = 0;
+        
+        for(int i = 0; i < nums.length; i++){
+            
+            boolean flag = false; 
+            
+            for(int j = 0; j < nums.length; j++){
+                if( (i != j) && nums[i] == nums[j]){
+                    flag = true; 
+                    break;
+                }
+            }
+            
+            if(!flag){
+                result[index++] = nums[i];
+            }
+        }
+        
+        return result; 
         
     }
     
