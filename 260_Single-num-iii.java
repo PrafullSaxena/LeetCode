@@ -1,3 +1,14 @@
+
+/*
+            Solution
+            
+            Step 1) XOR all the elements, lets store it in the variable aXorB, XOR eliminate the same values hence we will left with the XOR of two diff values
+            Step 2) (aXorB &  -aXorB)   // After doing XOR our next step is to find the each values from the XOR of them and one way of doing it is to find the 2's compliment and then AND it with the aXorB 
+            Step 3) after doing this if we XOR the values with the each elements all the elements will devided in two catagory, 1 which has 1 at the most significance bit and one which has 0
+            Step 4) now we can do XOR from each of this bucket and the unique element will be found. 
+
+*/
+
 class Solution {
     public int[] singleNumber(int[] nums) {
         
