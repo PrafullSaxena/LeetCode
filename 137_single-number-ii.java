@@ -1,7 +1,38 @@
 class Solution {
     public int singleNumber(int[] nums) {
         
-        return BruteForce(nums);
+        // return BruteForce(nums);  // O(n^3)
+        return withSpace(nums);    // O(n)
+        
+    }
+    
+    
+    public int withSpace(int[] nums){
+
+        Map<Integer, Integer> bucket = new HashMap<>();
+        int result = 0;
+
+        for(int i:nums){
+
+            if(bucket.containsKey(i)){
+                if(bucket.get(i).equals(3)){
+                    bucket.remove(i);
+                }else{
+                    bucket.put(i, bucket.get(i) + 1);
+                }
+            }else {
+                bucket.put(i, 1);
+            }
+        }
+
+        for(int i : bucket.keySet()){
+            if(bucket.get(i).equals(1)){
+                result = i;
+                return result; 
+            }
+
+        }
+        return result;
         
     }
     
