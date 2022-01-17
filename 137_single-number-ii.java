@@ -1,9 +1,23 @@
 class Solution {
     public int singleNumber(int[] nums) {
         
-        // return BruteForce(nums);  // O(n^3)
-        return withSpace(nums);    // O(n)
+        // return BruteForce(nums);
+        // return withSpace(nums);
+        return sortingApproch(nums);
         
+    }
+    
+    public int sortingApproch(int[] nums){
+        
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length; i+=3) {
+            if(i == nums.length - 1){
+                return nums[i];
+            }else if(nums[i] != nums[i+1]){
+                return nums[i];
+            }
+        }
+        return 0;
     }
     
     
