@@ -3,25 +3,17 @@ class Solution {
         return BruteForce(x);
     }
     
-    public boolean BruteForce(int n){
+    public boolean BruteForce(int actualNumber){
         
-        int rev = 0;
-        int actualNumber = n;
-        
-        while( n > 0){
-            
-            int temp = n % 10;
-            n = n / 10;
-            
-            rev = (rev * 10) + temp ;
-            
+        int reverseNumber = 0;
+        int num = actualNumber;
+
+        while (num > 0){
+            int rem = num % 10;
+            reverseNumber = reverseNumber * 10 + rem;
+            num /= 10;
         }
         
-        if (actualNumber == rev) {
-            return true;
-        }else {
-            return false;
-        }
-        
+        return (actualNumber == reverseNumber)? true : false;
     }
 }
