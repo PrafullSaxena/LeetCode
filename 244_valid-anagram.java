@@ -1,7 +1,27 @@
 class Solution {
     public boolean isAnagram(String s, String t) {
         // return BruteForce(s, t);
-        return withSpace(s, t);
+        // return withSpace(s, t);
+        return withSorting(s, t);
+    }
+    
+    public  boolean withSorting(String s, String t){
+
+        if(s.length() != t.length()) return false;
+
+        char[] inputString = s.toCharArray();
+        char[] targetString = t.toCharArray();
+
+        Arrays.sort(inputString);
+        Arrays.sort(targetString);
+
+        for(int i = 0; i<inputString.length; i++){
+            if(inputString[i] != targetString[i]){
+                return false;
+            }
+        }
+
+        return true;
     }
     
     public static boolean withSpace(String s, String t){
